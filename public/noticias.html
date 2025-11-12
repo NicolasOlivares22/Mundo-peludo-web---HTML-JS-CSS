@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noticias • Mundo Peludo</title>
+    <link rel="icon" type="image/png" href="img/mundo-peludo-logo.png" />
+    <style>
+      :root {
+        --bg: #fff8f1;
+        --text: #2f2f2f;
+        --primary: #e07a5f;
+        --primary-600: #d56445;
+        --accent: #81b29a;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif; color: var(--text); background: var(--bg); }
+      header { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10; }
+      header .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+      header img.logo { width: 36px; height: 36px; object-fit: contain; }
+      header a.btn { text-decoration: none; color: #fff; background: var(--primary); padding: 8px 12px; border-radius: 8px; font-weight: 600; }
+      header a.btn:hover { background: var(--primary-600); }
+      main { max-width: 1000px; margin: 24px auto; padding: 0 16px 40px; }
+      h1 { margin: 10px 0 6px; }
+      .subtitle { color: #666; margin: 0 0 18px; }
+
+      /* Carousel */
+      .carousel { position: relative; overflow: hidden; border-radius: 12px; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+      .slides { display: flex; transition: transform 0.45s ease; }
+      .slide { min-width: 100%; height: 340px; position: relative; }
+      .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .caption { position: absolute; bottom: 10px; left: 10px; padding: 8px 12px; border-radius: 8px; background: rgba(0,0,0,0.55); color: #fff; font-size: 14px; }
+      .controls { position: absolute; inset: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 6px; }
+      .control-btn { background: rgba(0,0,0,0.4); color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
+      .indicators { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+      .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); cursor: pointer; border: 1px solid rgba(0,0,0,0.2); }
+      .dot.active { background: var(--accent); }
+
+      /* Events */
+      .events { margin-top: 22px; }
+      .week { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } .slide { height: 260px; } }
+      .card { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 12px; }
+      .card h3 { margin: 0 0 6px; font-size: 16px; }
+      .meta { color: #666; font-size: 13px; margin-bottom: 6px; }
+      .ok { display: inline-block; background: #e8f5ef; color: #246b4e; border: 1px solid #cfe9dc; border-radius: 8px; padding: 4px 8px; font-size: 12px; }
+      .note { margin-top: 10px; font-size: 13px; color: #444; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <img class="logo" src="img/mundo-peludo-logo.png" alt="Mundo Peludo" />
+        <span>Mundo Peludo • Noticias</span>
+      </div>
+      <nav>
+        <a class="btn" href="/">Volver a inicio</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Próxima semana de eventos</h1>
+      <p class="subtitle">Del 20 al 26 de octubre — ¡ven con tu mascota!</p>
+
+      <!-- Carousel -->
+      <section class="carousel" aria-label="Carrusel de mascotas">
+        <div class="slides" id="slides">
+          <figure class="slide">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1600&auto=format&fit=crop" alt="Perro feliz en el parque" />
+            <figcaption class="caption">Parques pet‑friendly: paseos y socialización</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://placekitten.com/1600/900" onerror="this.src='https://picsum.photos/seed/cat/1600/900'" alt="Gato descansando cómodamente" />
+            <figcaption class="caption">Zonas tranquilas para felinos y dueños</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?q=80&w=1600&auto=format&fit=crop" alt="Perro y gato juntos" />
+            <figcaption class="caption">Eventos para compartir con tu mascota</figcaption>
+          </figure>
+        </div>
+        <div class="controls" aria-hidden="false">
+          <button class="control-btn" id="prev" aria-label="Anterior">‹</button>
+          <button class="control-btn" id="next" aria-label="Siguiente">›</button>
+        </div>
+        <div class="indicators" id="indicators" aria-hidden="false"></div>
+      </section>
+
+      <!-- Events -->
+      <section class="events">
+        <div class="week">
+          <p>
+            Durante la semana del <strong>20 de octubre</strong>, habrá actividades en distintos parques pensadas para <strong>mascotas y dueños</strong>.
+            <span class="ok">Se puede asistir con mascotas</span> y encontrarás estaciones de agua, áreas de descanso y logística amigable.
+          </p>
+          <div class="grid">
+            <article class="card">
+              <h3>Dom 20 — Picnic Canino</h3>
+              <div class="meta">Parque Central • 10:00–13:00</div>
+              <p>Picnic grupal, zona de juegos y charla de bienestar animal.</p>
+            </article>
+            <article class="card">
+              <h3>Mar 22 — Caminata de Socialización</h3>
+              <div class="meta">Parque Norte • 18:00–19:30</div>
+              <p>Recorrido guiado con tips para paseos seguros y convivencia.</p>
+            </article>
+            <article class="card">
+              <h3>Jue 24 — Obediencia Básica</h3>
+              <div class="meta">Parque Los Álamos • 17:30–19:00</div>
+              <p>Sesión práctica con refuerzo positivo; trae premios y correa.</p>
+            </article>
+            <article class="card">
+              <h3>Sáb 26 — Feria de Adopción</h3>
+              <div class="meta">Parque Central • 10:00–16:00</div>
+              <p>Encuentro con fundaciones, adopciones responsables y actividades familiares.</p>
+            </article>
+          </div>
+          <p class="note">
+            Recomendaciones: llevar <strong>correa</strong> y <strong>bolsas</strong>, asistir con mascotas sociables y con <strong>vacunas al día</strong>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function() {
+        const slides = document.getElementById('slides');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        const indicators = document.getElementById('indicators');
+        const total = slides.children.length;
+        let index = 0;
+        let timer = null;
+
+        // Crear dots
+        for (let i = 0; i < total; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Ir al slide ' + (i + 1));
+          dot.addEventListener('click', () => goTo(i));
+          indicators.appendChild(dot);
+        }
+
+        function update() {
+          slides.style.transform = `translateX(-${index * 100}%)`;
+          [...indicators.children].forEach((d, i) => d.classList.toggle('active', i === index));
+        }
+        function goTo(i) { index = (i + total) % total; update(); restart(); }
+        function nextSlide() { goTo(index + 1); }
+        function prevSlide() { goTo(index - 1); }
+        function restart() { clearInterval(timer); timer = setInterval(nextSlide, 4500); }
+
+        next.addEventListener('click', nextSlide);
+        prev.addEventListener('click', prevSlide);
+        restart();
+        document.addEventListener('visibilitychange', () => { if (document.hidden) clearInterval(timer); else restart(); });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+/* Paleta de colores (Mundo Peludo) */
+:root {
+  /* Marca */
+  --brand-primary: #FF914D; /* Naranja suave */
+  --brand-secondary: #FFD36B; /* Amarillo pastel */
+  --brand-bg: #FFF8F0; /* Fondo principal claro */
+  --brand-alt-bg: #F6E6D5; /* Fondo alternativo secciones */
+  --brand-text: #333333; /* Texto principal */
+  --brand-text-muted: #777777; /* Texto secundario */
+  --brand-accent: #6EC1E4; /* Links amigables */
+  --brand-success: #7ED957; /* Badges/ofertas */
+
+  /* Mapeo a variables Bootstrap */
+  --bs-primary: var(--brand-primary);
+  --bs-secondary: var(--brand-secondary);
+  --bs-success: var(--brand-success);
+  --bs-body-bg: var(--brand-bg);
+  --bs-body-color: var(--brand-text);
+  --bs-link-color: var(--brand-accent);
+  --bs-link-hover-color: #4fb5db; /* hover del acento */
+}
+
+html, body {
+  background: var(--brand-bg);
+  color: var(--brand-text);
+}
+
+/* Navbar */
+.navbar-brand {
+  color: var(--brand-primary) !important;
+}
+.navbar .nav-link {
+  color: var(--brand-text);
+}
+.navbar .nav-link:hover {
+  color: var(--brand-accent);
+}
+
+/* Hero */
+.hero {
+  padding: 3rem 0;
+  background: var(--brand-alt-bg);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.hero .display-5 {
+  color: var(--brand-primary);
+}
+.hero .lead {
+  color: var(--brand-text-muted);
+}
+
+/* Logo en Hero */
+.hero-logo {
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+@media (min-width: 768px) {
+  .hero-logo { height: 72px; width: 72px; }
+}
+
+/* Variante grande para el lateral derecho del Hero */
+.hero-logo-right {
+  height: 120px;
+  width: 120px;
+}
+@media (min-width: 992px) {
+  .hero-logo-right { height: 140px; width: 140px; }
+}
+
+/* Botones principales: asegurar tonos y hover */
+.btn-primary {
+  --bs-btn-bg: var(--brand-primary);
+  --bs-btn-border-color: var(--brand-primary);
+  --bs-btn-hover-bg: var(--brand-secondary);
+  --bs-btn-hover-border-color: var(--brand-secondary);
+  --bs-btn-active-bg: var(--brand-secondary);
+  --bs-btn-active-border-color: var(--brand-secondary);
+  --bs-btn-focus-shadow-rgb: 255, 145, 77;
+}
+
+/* Badge especial para promos/ofertas */
+.badge-special {
+  background-color: var(--brand-success);
+  color: #10320f; /* legible sobre verde suave */
+}
+
+/* Cards de producto */
+.card {
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 14px;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
+}
+.card-title {
+  color: var(--brand-text);
+}
+.card-text {
+  color: var(--brand-text-muted);
+}
+
+/* Secciones alternativas */
+.section-alt {
+  background: var(--brand-alt-bg);
+}
+
+/* Links generales */
+a {
+  color: var(--brand-accent);
+}
+a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+/* Utilidades */
+.text-muted-custom {
+  color: var(--brand-text-muted) !important;
+}
+
+/* Iconos de beneficios (círculo) */
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--brand-accent);
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* --- Registro de usuarios (estética pastel amigable) --- */
+.register-card {
+  background: #FFE8D6; /* pastel cálido */
+  border-radius: 18px;
+  box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.register-header {
+  background: #FCD5CE; /* encabezado suave */
+  border-bottom: 0;
+}
+.btn-paw {
+  --bs-btn-bg: #FFB5A7;
+  --bs-btn-border-color: #FFB5A7;
+  --bs-btn-hover-bg: #FCD5CE;
+  --bs-btn-hover-border-color: #FCD5CE;
+  --bs-btn-active-bg: #FCD5CE;
+  --bs-btn-active-border-color: #FCD5CE;
+  color: #4a3222;
+}
+.input-group-text.paw {
+  background: #FCD5CE;
+  border-color: #FCD5CE;
+}
+
+/* --- Login (estética pastel similar) --- */
+.login-card {
+  background: #FFE8D6;
+  border-radius: 18px;
+  box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.login-header {
+  background: #FCD5CE;
+  border-bottom: 0;
+}
